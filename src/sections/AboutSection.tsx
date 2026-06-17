@@ -89,9 +89,9 @@ const renderPreviewContent = (tab: TabId) => {
               </div>
               <p className="academic-institution">FIAP — 2 Anos</p>
             </div>
-            
+
             <div className="academic-divider" />
-            
+
             <div className="academic-item">
               <div className="academic-header">
                 <h4 className="academic-title">Análise e Desenvolvimento de Sistemas</h4>
@@ -143,12 +143,12 @@ const renderPreviewContent = (tab: TabId) => {
               <div className="project-preview-card-header" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'flex-start' }}>
                   <strong style={{ fontSize: '1.2rem' }}>MicroGestor</strong>
-                  <span className="status-badge status-concluded" style={{ fontSize: '0.75rem', textAlign: 'center' }}>1º Lugar EMPREENDESIM<br/>FEA-USP 2023</span>
+                  <span className="status-badge status-concluded" style={{ fontSize: '0.75rem', textAlign: 'center' }}>1º Lugar EMPREENDESIM<br />FEA-USP 2023</span>
                 </div>
                 <span style={{ fontSize: '0.85rem', color: '#a1a1a6', fontWeight: 500 }}>Arquitetura & Front-end</span>
               </div>
               <p style={{ fontSize: '0.9rem', lineHeight: '1.5', marginTop: '12px', textAlign: 'left' }}>
-                Plataforma web desenvolvida para auxiliar microempreendedores iniciantes a gerirem seus negócios de forma simples e acessível. 
+                Plataforma web desenvolvida para auxiliar microempreendedores iniciantes a gerirem seus negócios de forma simples e acessível.
                 Fui responsável por estruturar a arquitetura e desenvolvimento do front-end, garantindo uma interface intuitiva, além de estruturar e apresentar o pitch de vendas.
               </p>
             </div>
@@ -171,7 +171,7 @@ function AboutSection() {
         {/* Giant Headline */}
         <div className="about__header">
           <h2 className="about__title">
-            Minha vida entre a <em>escola</em> e o <em>trabalho</em>
+            Minha vida <em>acadêmica</em> e <em>profissional</em>
           </h2>
           <p className="about__subtitle">
             Uma rotina dividida entre o aprofundamento técnico na universidade e a construção de produtos digitais no mercado. A teoria me dá a base e a prática molda minha excelência em desenvolvimento.
@@ -205,8 +205,8 @@ function AboutSection() {
                 <span className="ide-dot expand"></span>
               </div>
               <div className="ide-title">
-                {viewMode === 'code' 
-                  ? `${activeTab === 'academica' ? 'academic' : activeTab}.ts` 
+                {viewMode === 'code'
+                  ? `${activeTab === 'academica' ? 'academic' : activeTab}.ts`
                   : 'preview.md'}
               </div>
               <div className="ide-mode-toggle">
@@ -215,7 +215,7 @@ function AboutSection() {
                   onClick={() => setViewMode('preview')}
                   title="Visualizar Formatação"
                 >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
                   <span>Preview</span>
                 </button>
                 <button
@@ -223,7 +223,7 @@ function AboutSection() {
                   onClick={() => setViewMode('code')}
                   title="Ver Código Fonte"
                 >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
                   <span>Código</span>
                 </button>
               </div>
