@@ -1,0 +1,119 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: var(--space-md) 0;
+  transition: background-color var(--duration) var(--ease-out),
+              border-color var(--duration) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar--scrolled {
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--hairline);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2rem;
+}
+
+.navbar__logo {
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: opacity var(--duration) var(--ease-out);
+}
+
+.navbar__logo:hover {
+  opacity: 0.7;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.navbar__link {
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-regular);
+  color: var(--ink-muted);
+  transition: color var(--duration) var(--ease-out);
+}
+
+.navbar__link:hover {
+  color: var(--ink);
+}
+
+/* ─── Hamburger ─── */
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  z-index: 1001;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--ink);
+  transition: transform var(--duration) var(--ease-out),
+              opacity var(--duration) var(--ease-out);
+  transform-origin: center;
+}
+
+.navbar__hamburger--open span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.navbar__hamburger--open span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* ─── Mobile ─── */
+
+@media (max-width: 768px) {
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2xl);
+    background-color: var(--canvas);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration) var(--ease-out);
+    z-index: 999;
+  }
+
+  .navbar__links--open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navbar__links--open .navbar__link {
+    font-size: var(--text-card-title);
+  }
+}

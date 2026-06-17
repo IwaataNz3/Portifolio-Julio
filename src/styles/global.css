@@ -1,0 +1,203 @@
+/* ═══════════════════════════════════════════════════
+   GLOBAL STYLES — Iwata Dark Grain
+   ═══════════════════════════════════════════════════ */
+
+@import './reset.css';
+@import './tokens.css';
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  color: var(--ink);
+  background-color: var(--canvas);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+
+
+/* ─── Selection ─── */
+
+::selection {
+  background-color: var(--accent-soft);
+  color: var(--ink);
+}
+
+/* ─── Container ─── */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: var(--content-padding);
+}
+
+/* ─── Section ─── */
+
+.section {
+  padding-block: var(--space-section);
+}
+
+/* ─── Eyebrow (Section Label) ─── */
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-bottom: var(--space-xl);
+}
+
+/* ─── Section Title (Serif Italic) ─── */
+
+.section-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-section);
+  font-weight: var(--weight-regular);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ─── Divider ─── */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--hairline);
+  border: none;
+}
+
+/* ─── Buttons ─── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.75rem 1.75rem;
+  background-color: var(--cta-bg);
+  color: var(--cta-text);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-pill);
+  border: none;
+  transition: background-color var(--duration) var(--ease-out),
+              transform var(--duration) var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background-color: var(--cta-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.75rem 1.75rem;
+  background-color: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  transition: border-color var(--duration) var(--ease-out),
+              background-color var(--duration) var(--ease-out),
+              transform var(--duration) var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--hairline-hover);
+  background-color: var(--surface-1);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+/* ─── Focus States ─── */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Links ─── */
+
+.link {
+  color: var(--ink-muted);
+  transition: color var(--duration) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--ink);
+}
+
+.link-accent {
+  color: var(--accent);
+  transition: color var(--duration) var(--ease-out);
+}
+
+.link-accent:hover {
+  color: var(--accent-muted);
+}
+
+/* ─── Tech Badge ─── */
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  background-color: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  color: var(--ink-muted);
+  white-space: nowrap;
+  transition: border-color var(--duration) var(--ease-out),
+              color var(--duration) var(--ease-out);
+}
+
+.tech-badge:hover {
+  border-color: var(--hairline-strong);
+  color: var(--ink);
+}
+
+/* ─── Scrollbar ─── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faint);
+}

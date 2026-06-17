@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — Iwata Dark Grain
+   Inspired by Monologue.to
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Surface ─── */
+  --canvas:           #0A0A0A;
+  --surface-1:        #141414;
+  --surface-2:        #1A1A1A;
+  --surface-3:        #1E1E1E;
+
+  /* ─── Borders ─── */
+  --hairline:         #1F1F1F;
+  --hairline-strong:  #2A2A2A;
+  --hairline-hover:   #353535;
+
+  /* ─── Text ─── */
+  --ink:              #F5F5F5;
+  --ink-muted:        #A1A1A6;
+  --ink-subtle:       #6E6E73;
+  --ink-faint:        #3A3A3F;
+
+  /* ─── Accent (Violeta Sutil) ─── */
+  --accent:           #8B5CF6;
+  --accent-muted:     #7C3AED;
+  --accent-soft:      rgba(139, 92, 246, 0.12);
+
+  /* ─── CTA ─── */
+  --cta-bg:           #F5F5F5;
+  --cta-text:         #0A0A0A;
+  --cta-hover:        #FFFFFF;
+
+  /* ─── Typography ─── */
+  --font-display:     'Instrument Serif', 'Georgia', serif;
+  --font-body:        'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono:        'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* ─── Font Sizes ─── */
+  --text-hero:        clamp(2.5rem, 5vw + 1rem, 4rem);
+  --text-section:     clamp(1.75rem, 3vw + 0.5rem, 2.5rem);
+  --text-card-title:  1.25rem;
+  --text-body:        1rem;
+  --text-body-sm:     0.875rem;
+  --text-caption:     0.75rem;
+  --text-eyebrow:     0.8125rem;
+  --text-button:      0.875rem;
+  --text-mono:        0.8125rem;
+
+  /* ─── Font Weights ─── */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+
+  /* ─── Spacing ─── */
+  --space-xs:         0.5rem;    /* 8px */
+  --space-sm:         0.75rem;   /* 12px */
+  --space-md:         1rem;      /* 16px */
+  --space-lg:         1.5rem;    /* 24px */
+  --space-xl:         2rem;      /* 32px */
+  --space-2xl:        3rem;      /* 48px */
+  --space-3xl:        4rem;      /* 64px */
+  --space-section:    clamp(5rem, 10vw, 9rem);
+
+  /* ─── Layout ─── */
+  --max-width:        1200px;
+  --content-padding:  clamp(1.25rem, 4vw, 3rem);
+
+  /* ─── Radius ─── */
+  --radius-sm:        6px;
+  --radius-md:        10px;
+  --radius-lg:        14px;
+  --radius-pill:      9999px;
+
+  /* ─── Transitions ─── */
+  --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+  --duration:         0.3s;
+}

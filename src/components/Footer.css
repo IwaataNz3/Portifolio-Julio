@@ -1,0 +1,79 @@
+.footer {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer__name {
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+}
+
+.footer__copy {
+  font-size: var(--text-caption);
+  color: var(--ink-faint);
+}
+
+.footer__nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer__link {
+  font-size: var(--text-body-sm);
+  color: var(--ink-subtle);
+  transition: color var(--duration) var(--ease-out);
+}
+
+.footer__link:hover {
+  color: var(--ink);
+}
+
+/* ─── Ghost Name ─── */
+
+.footer__ghost {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(6rem, 14vw, 14rem);
+  font-weight: var(--weight-regular);
+  color: var(--ink);
+  opacity: 0.025;
+  text-align: center;
+  margin-top: var(--space-2xl);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 640px) {
+  .footer__content {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .footer__nav {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+}

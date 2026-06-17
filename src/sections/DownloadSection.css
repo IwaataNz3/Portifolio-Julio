@@ -1,0 +1,87 @@
+.download-section {
+  position: relative;
+  width: 100vw;
+  padding: 0 0 250px 0;
+  background: #042226;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.download-section__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(10rem, 30vw, 30rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.04); /* More subtle */
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  text-transform: capitalize;
+}
+
+.download-section__center {
+  position: relative;
+  z-index: 10;
+}
+
+/* Badge card override in download section if needed */
+.download-section__center .badge-card {
+  transform: perspective(1000px) rotateY(-5deg) rotateX(10deg) scale(0.9);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.download-section__center .badge-card:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(0.95) translateY(-10px);
+}
+
+.download-section__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #7b9598;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #7b9598;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .download-section__footer {
+    padding: 24px;
+    justify-content: center;
+  }
+  .footer-links {
+    justify-content: center;
+    gap: 16px;
+  }
+}

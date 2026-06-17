@@ -1,0 +1,234 @@
+.projects {
+  width: 100vw;
+  padding: 40px 0; /* Decreased vertical padding */
+  background-color: #1e1e20;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  z-index: 10;
+  overflow: hidden; /* Prevent horizontal scrollbar on body */
+}
+
+.projects__container {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Header ─── */
+.projects__header {
+  text-align: center;
+  margin-bottom: 40px; /* Decreased margin */
+  padding: 0 5vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects__title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 40%, #888888 60%, #e5e5e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects__subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #a1a1a6;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ─── Carousel Controls (Arrows) ─── */
+.projects__controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px; /* Rounded square like reference */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* ─── Projects Carousel Wrapper (For Blur Mask) ─── */
+.projects__carousel-wrapper {
+  width: 100%;
+  position: relative;
+  /* Dark fade on left and right edges */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* ─── Projects Carousel ─── */
+.projects__carousel {
+  display: flex;
+  gap: 32px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 5vw 40px 5vw; /* Put horizontal padding back for the wrapper mask effect */
+  
+  /* Hide scrollbar completely now that we have arrows */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.projects__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fix right margin cutoff inside flex scroll container */
+.projects__carousel::after {
+  content: "";
+  flex: 0 0 5vw;
+}
+
+/* ─── Project Card ─── */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+  max-width: 500px;
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.project-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-card__image-wrapper {
+  aspect-ratio: 16 / 10;
+  background: #111112;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.05),
+    0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 24px;
+}
+
+.project-card:hover .project-card__image-wrapper {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.project-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #18181a 0%, #111112 100%);
+}
+
+.placeholder-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* ─── Card Info ─── */
+.project-card__info {
+  margin-bottom: 24px;
+  padding: 0 8px;
+}
+
+.project-card__title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #e5e5e5;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+/* ─── Tech Tags ─── */
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-card__tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #a1a1a6;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* ─── Card Footer (Links) ─── */
+.project-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8px 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+}
+
+.project-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #a1a1a6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.project-btn:hover {
+  color: #fff;
+}
+
+.project-btn--live {
+  color: #00b4d8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-card {
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+}
