@@ -13,11 +13,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.5;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 img, picture, video, canvas, svg {
