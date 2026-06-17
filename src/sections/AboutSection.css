@@ -612,3 +612,29 @@
     width: 100%;
   }
 }
+
+@media (max-width: 600px) {
+  .about {
+    padding: 10vh 5vw 8vh;
+  }
+  .about__title {
+    font-size: 2.5rem;
+  }
+  .about__subtitle {
+    font-size: 0.75rem;
+  }
+  .about__ide {
+    min-height: 320px;
+  }
+  .ide-preview {
+    padding: 16px;
+    min-height: 280px;
+  }
+  .about__marquee-title {
+    font-size: 1.5rem;
+    padding-right: 20px;
+  }
+  .about__marquee-content span {
+    font-size: 0.75rem;
+  }
+}

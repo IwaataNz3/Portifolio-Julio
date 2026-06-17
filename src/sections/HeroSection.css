@@ -295,14 +295,91 @@
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .hero__top-right {
-    display: none;
+    top: auto;
+    bottom: 22vh;
+    right: 5vw;
   }
   
+  .notes-card {
+    padding: 8px;
+    gap: 16px;
+  }
+  
+  .notes-card__text {
+    font-size: 1.1rem;
+  }
+  
+  .notes-card__video {
+    width: 120px;
+    height: 50px;
+  }
+
+  .notes-card__btn {
+    padding: 6px 12px;
+    font-size: 0.65rem;
+  }
+
   .hero__headline {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .hero__giant-text {
     font-size: 40vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__top-left {
+    top: 12vh;
+  }
+
+  .hero__headline {
+    font-size: 2.2rem;
+  }
+
+  .hero__sub {
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+  }
+
+  .hero__top-right {
+    top: 40vh; /* Move for the middle gap */
+    bottom: auto;
+    left: 5vw;
+    right: auto;
+  }
+  
+  .notes-card {
+    padding: 8px 12px;
+    gap: 12px;
+  }
+  
+  .notes-card__text {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  
+  .notes-card__video {
+    width: 100px;
+    height: 40px;
+  }
+
+  .notes-card__btn {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+
+  .hero__center-stage {
+    bottom: 2vh;
+    transform: translateX(-50%) scale(0.85);
+  }
+
+  .hero__stamp {
+    transform: rotate(-10deg) translate(-80px, 20px);
+  }
+
+  .hero__giant-text {
+    font-size: 45vw;
+    bottom: -2vh;
   }
 }

@@ -232,3 +232,24 @@
     max-width: 80vw;
   }
 }
+
+@media (max-width: 600px) {
+  .projects__title {
+    font-size: 2.5rem;
+  }
+  .projects__subtitle {
+    font-size: 0.75rem;
+  }
+  .project-card {
+    min-width: 90vw;
+    max-width: 90vw;
+    padding: 12px;
+  }
+  .project-card__title {
+    font-size: 1.8rem;
+  }
+  .projects__carousel {
+    gap: 16px;
+    padding: 0 5vw 24px 5vw;
+  }
+}

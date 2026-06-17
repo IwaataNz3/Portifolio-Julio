@@ -45,9 +45,9 @@ function HeroSection() {
           </div>
           <div className="notes-card__video">
             <img src={fundoProjeto} alt="Projetos" />
-            <button className="notes-card__btn">
+            <a href="#projetos" className="notes-card__btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
               Ver projetos
-            </button>
+            </a>
           </div>
         </div>
       </div>

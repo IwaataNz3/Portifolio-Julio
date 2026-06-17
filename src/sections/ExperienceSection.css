@@ -101,6 +101,23 @@
 }
 
 .experience__desc {
-    gap: var(--space-xs);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #d4d4d4;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .experience {
+    padding: 60px 5vw 20px 5vw;
+  }
+  .experience__title {
+    font-size: 2.5rem;
+  }
+  .experience__card {
+    padding: 24px;
+  }
+  .experience__role {
+    font-size: 1.8rem;
   }
 }
