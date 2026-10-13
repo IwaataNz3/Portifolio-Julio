@@ -90,6 +90,7 @@ function ContactSection() {
               className="contact-card"
               target="_blank"
               rel="noopener noreferrer"
+              data-cursor="abrir"
               style={{ '--hover-color': link.hoverColor } as React.CSSProperties}
             >
               <div className="contact-card__halftone-grain"></div>
@@ -119,6 +120,7 @@ function ContactSection() {
             type="button"
             className={`contact-card contact-card--email ${copied ? 'contact-card--copied' : ''}`}
             onClick={handleEmail}
+            data-cursor="copiar"
             style={{ '--hover-color': '#ea4335' } as React.CSSProperties}
           >
             <div className="contact-card__halftone-grain"></div>

@@ -130,7 +130,7 @@ function BadgeCard({ hanging = false }: BadgeCardProps) {
         </svg>
       )}
 
-      <div className="badge-card" ref={cardRef} onClick={handleCardClick}>
+      <div className="badge-card" ref={cardRef} onClick={handleCardClick} data-cursor="virar">
         <div className="badge-clip"></div>
 
         <button

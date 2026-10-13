@@ -88,6 +88,7 @@ function ProjectsSection() {
                   type="button"
                   className="project-card__image-wrapper"
                   onClick={() => setOpenIndex(projectIndex)}
+                  data-cursor="ver"
                   aria-label={`Ver detalhes do projeto ${project.title}`}
                 >
                   {project.image ? (

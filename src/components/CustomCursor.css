@@ -37,6 +37,40 @@ body {
   transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
 }
 
+/* Escondido (mouse fora da janela ou tela de toque) */
+.cursor--hidden {
+  opacity: 0;
+}
+
+/* Rótulo dentro do anel: "ver", "copiar", "virar", "abrir" */
+.cursor-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #000;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+.cursor-ring.cursor-ring--label {
+  width: 72px;
+  height: 72px;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.cursor-ring.cursor-ring--label .cursor-label {
+  opacity: 1;
+  transform: none;
+}
+
 /* Hover States */
 .cursor-dot--hover {
   width: 0px;
