@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { visual } from '../data/visual'
 import Lightbox from '../components/Lightbox'
+import BeforeAfter from '../components/BeforeAfter'
 import './OffCodeSection.css'
 
 function OffCodeSection() {
@@ -33,7 +34,9 @@ function OffCodeSection() {
         <ul className="offcode__grid">
           {visual.items.map((item) => (
             <li key={item.id} className="offcode__item">
-              {item.src ? (
+              {item.compare ? (
+                <BeforeAfter before={item.compare.before} after={item.compare.after} alt={item.alt} />
+              ) : item.src ? (
                 <button
                   type="button"
                   className="offcode__photo"

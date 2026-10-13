@@ -1,0 +1,99 @@
+.before-after {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.before-after__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* O "antes" fica por cima, cortado até a linha */
+.before-after__img--before {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.before-after__label {
+  position: absolute;
+  top: 14px;
+  z-index: 2;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+}
+
+.before-after__label--before {
+  left: 14px;
+}
+
+.before-after__label--after {
+  right: 14px;
+}
+
+/* Linha fina com a alça no meio */
+.before-after__divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  z-index: 3;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.before-after__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 16, 17, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.before-after:hover .before-after__handle {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Controle invisível por cima de tudo: arraste, toque e teclado */
+.before-after__range {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+
+/* Foco do teclado aparece na alça */
+.before-after:has(.before-after__range:focus-visible) .before-after__handle {
+  outline: 2px solid #00b4d8;
+  outline-offset: 3px;
+}

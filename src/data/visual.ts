@@ -6,9 +6,14 @@
 // 3. Use no `src` do item e escreva um `alt` descrevendo a imagem.
 // Item sem `src` aparece como espaço reservado. O primeiro item é o grande.
 
+import gradingAntes from '../assets/visual/grading-antes.webp'
+import gradingDepois from '../assets/visual/grading-depois.webp'
+
 export interface VisualItem {
   id: string
   src?: string
+  /** Antes e depois do color grading: vira o slider de comparação. */
+  compare?: { before: string; after: string }
   alt: string
   caption: string
 }
@@ -23,9 +28,15 @@ export const visual = {
 
   // TODO: trocar os espaços reservados pelas suas imagens
   items: [
-    { id: 'visual-1', alt: '', caption: 'Fotografia' },
+    {
+      id: 'grading-por-do-sol',
+      // REVISAR: descrição da imagem
+      alt: 'Pôr do sol sobre um vale com casas e montanhas ao fundo',
+      caption: 'Color grading · arraste para comparar',
+      compare: { before: gradingAntes, after: gradingDepois },
+    },
     { id: 'visual-2', alt: '', caption: 'Vídeo' },
-    { id: 'visual-3', alt: '', caption: 'Color grading' },
+    { id: 'visual-3', alt: '', caption: 'Fotografia' },
     { id: 'visual-4', alt: '', caption: 'Fotografia' },
     { id: 'visual-5', alt: '', caption: 'Vídeo' },
   ] as VisualItem[],
