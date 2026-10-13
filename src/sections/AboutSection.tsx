@@ -44,7 +44,7 @@ const timeline: Experiencia[] = [
     ]
   }
 ];`,
-  projetos: `// Projetos em destaque
+  projetos: `// Projetos acadêmicos
 import { render } from 'engine';
 
 export function lab() {
@@ -54,6 +54,18 @@ export function lab() {
       status: "1º Lugar EMPREENDESIM FEA-USP",
       role: "Arquitetura & Front-end",
       description: "Plataforma web de gestão para microempreendedores iniciantes."
+    },
+    { 
+      name: "SpaceThon", 
+      status: "FIAP Global Solution 2026",
+      role: "Front-end",
+      description: "Projeto em grupo sobre inovação espacial."
+    },
+    { 
+      name: "Ecoguia", 
+      status: "FIAP Challenge 2026",
+      role: "Front-end",
+      description: "Guia para incentivar práticas ecológicas."
     }
   ];
 }`
@@ -71,6 +83,35 @@ const techStack = [
   'HTML', 'CSS', 'JavaScript', 'Python', 'React', 'TypeScript',
   'Java', 'SQL', 'Oracle', 'Node', 'Git'
 ];
+
+// Projetos da aba "Projetos Acadêmicos". O id abre o painel de detalhes em Projetos.
+// REVISAR: papel e textos do SpaceThon e do Ecoguia
+const academicProjects = [
+  {
+    id: 'microgestor',
+    name: 'MicroGestor',
+    badge: ['1º Lugar EMPREENDESIM', 'FEA-USP 2023'],
+    badgeClass: 'status-concluded',
+    role: 'Arquitetura & Front-end',
+    description: 'Plataforma web desenvolvida para auxiliar microempreendedores iniciantes a gerirem seus negócios de forma simples e acessível. Fui responsável por estruturar a arquitetura e desenvolvimento do front-end, garantindo uma interface intuitiva, além de estruturar e apresentar o pitch de vendas.',
+  },
+  {
+    id: 'spacethon',
+    name: 'SpaceThon',
+    badge: ['FIAP · Global Solution', '2026'],
+    badgeClass: 'status-progress',
+    role: 'Front-end · projeto em grupo',
+    description: 'Projeto da Global Solution da FIAP sobre inovação espacial, desenvolvido em grupo ao longo do semestre.',
+  },
+  {
+    id: 'ecoguia',
+    name: 'Ecoguia',
+    badge: ['FIAP · Challenge', '2026'],
+    badgeClass: 'status-progress',
+    role: 'Front-end',
+    description: 'Solução do Challenge da FIAP para orientar e incentivar práticas ecológicas no dia a dia.',
+  },
+]
 
 const renderPreviewContent = (tab: TabId) => {
   switch (tab) {
@@ -139,19 +180,27 @@ const renderPreviewContent = (tab: TabId) => {
           <div className="preview-badge">Destaque</div>
           <h4 className="preview-heading">Projetos Acadêmicos</h4>
           <div className="projects-grid">
-            <div className="project-preview-card" style={{ gridColumn: '1 / -1' }}>
-              <div className="project-preview-card-header" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'flex-start' }}>
-                  <strong style={{ fontSize: '1.2rem' }}>MicroGestor</strong>
-                  <span className="status-badge status-concluded" style={{ fontSize: '0.75rem', textAlign: 'center' }}>1º Lugar EMPREENDESIM<br />FEA-USP 2023</span>
+            {academicProjects.map((project) => (
+              <div className="project-preview-card" key={project.id}>
+                <div className="project-preview-card-header academic-project__header">
+                  <div className="academic-project__top">
+                    <strong className="academic-project__name">{project.name}</strong>
+                    <span className={`status-badge ${project.badgeClass} academic-project__badge`}>
+                      {project.badge[0]}<br />{project.badge[1]}
+                    </span>
+                  </div>
+                  <span className="academic-project__role">{project.role}</span>
                 </div>
-                <span style={{ fontSize: '0.85rem', color: '#a1a1a6', fontWeight: 500 }}>Arquitetura & Front-end</span>
+                <p className="academic-project__desc">{project.description}</p>
+                <button
+                  type="button"
+                  className="academic-project__more"
+                  onClick={() => window.dispatchEvent(new CustomEvent('abrir-projeto', { detail: project.id }))}
+                >
+                  Ver detalhes →
+                </button>
               </div>
-              <p style={{ fontSize: '0.9rem', lineHeight: '1.5', marginTop: '12px', textAlign: 'left' }}>
-                Plataforma web desenvolvida para auxiliar microempreendedores iniciantes a gerirem seus negócios de forma simples e acessível.
-                Fui responsável por estruturar a arquitetura e desenvolvimento do front-end, garantindo uma interface intuitiva, além de estruturar e apresentar o pitch de vendas.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       )

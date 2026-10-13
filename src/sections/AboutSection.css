@@ -648,3 +648,53 @@
     font-size: 0.75rem;
   }
 }
+
+/* Cards da aba "Projetos Acadêmicos" */
+.academic-project__header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.academic-project__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.project-preview-card-header .academic-project__name {
+  font-size: 1.2rem;
+}
+
+.academic-project__badge {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.academic-project__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a1a1a6;
+}
+
+.project-preview-card .academic-project__desc {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.academic-project__more {
+  margin-top: 12px;
+  padding: 4px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #00b4d8;
+  transition: color 0.2s;
+}
+
+.academic-project__more:hover {
+  color: #fff;
+}
