@@ -1,3 +1,4 @@
+import microgestor from '../assets/microgestor.webp'
 import fundoProjeto from '../assets/fundo-projeto.webp'
 import fundoProjeto1 from '../assets/fundo-projeto1.webp'
 import fundoProjeto2 from '../assets/fundo-projeto2.webp'
@@ -14,12 +15,28 @@ export interface Project {
   details: string
   /** Sua parte no projeto. Sem texto, o bloco não aparece. */
   role?: string
+  /** Prêmio: vira o carimbo no card e o selo no painel. */
+  award?: { title: string; detail: string }
   image?: string
   liveUrl?: string
   repoUrl?: string
 }
 
 export const projects: Project[] = [
+  {
+    id: 'microgestor',
+    title: 'MicroGestor',
+    description: 'Plataforma web para microempreendedores organizarem o negócio, do controle de caixa à declaração do MEI.',
+    tech: ['React', 'Design Thinking'],
+    // REVISAR: textos (fatos do perfil.md)
+    context: 'TCC da Etec · Empreendesim FEA-USP',
+    details:
+      'Plataforma web no formato SaaS para microempreendedores. A ideia nasceu de um caso real: a mãe de uma amiga do grupo vendia brigadeiros e não conseguia organizar o negócio, com anotações em papel que se perdiam. Usamos Design Thinking para entender as dores desse público e levar o controle do papel para o digital. A plataforma tem controle de entradas e saídas, relatórios com gráficos por dia, mês ou ano, geração da declaração anual do MEI (DASN-SIMEI) e acesso a cursos gratuitos de empreendedorismo do Sebrae.',
+    role: 'Estruturei a ideia e fiz o front-end e o design da aplicação, num time de cerca de 6 pessoas. O projeto foi o nosso TCC na Etec e ficou em 1º lugar no Empreendesim da FEA-USP, entre cerca de 8 equipes.',
+    award: { title: '1º lugar', detail: 'Empreendesim FEA-USP 2023' },
+    liveUrl: 'https://microgestor.vercel.app/',
+    image: microgestor,
+  },
   {
     id: 'ozzi-weird-store',
     title: 'Ozzi Weird Store',

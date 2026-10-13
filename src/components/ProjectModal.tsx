@@ -74,6 +74,11 @@ function ProjectModal({ project, position, total, onClose, onPrev, onNext }: Pro
 
           <div className="project-modal__body">
             <span className="project-modal__context">{project.context}</span>
+            {project.award && (
+              <span className="project-modal__award">
+                {project.award.title} · {project.award.detail}
+              </span>
+            )}
             <h3 id="project-modal-title" className="project-modal__title">{project.title}</h3>
             <p className="project-modal__details">{project.details}</p>
 

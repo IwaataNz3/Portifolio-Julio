@@ -162,6 +162,58 @@
   margin-bottom: 24px;
 }
 
+/* ─── Projeto em destaque (MicroGestor) ─── */
+.project-card--featured {
+  border-color: rgba(0, 180, 216, 0.25);
+  background: rgba(0, 180, 216, 0.03);
+}
+
+.project-card--featured:hover {
+  border-color: rgba(0, 180, 216, 0.45);
+}
+
+.project-card__award {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00b4d8;
+}
+
+/* Carimbo no print, como o ACCESS GRANTED do hero */
+.project-card__stamp {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 8px 14px;
+  text-align: center;
+  background: #2a2a2a;
+  border: 1px dashed #444;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transform: rotate(-8deg);
+}
+
+.project-card__stamp span {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #10B981;
+}
+
+.project-card__stamp em {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1;
+  color: #fff;
+}
+
 /* O print é um botão que abre os detalhes do projeto. */
 button.project-card__image-wrapper {
   display: block;
