@@ -69,7 +69,7 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #666;
+  color: #8a8a8f;
 }
 
 .about__tab-btn h3 {
@@ -232,7 +232,7 @@
 .ide-toggle-btn {
   background: transparent;
   border: none;
-  color: #888;
+  color: #9a9a9a;
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 0.7rem;
@@ -328,7 +328,7 @@
 
 .status-badge.status-progress {
   background: rgba(0, 122, 255, 0.1);
-  color: #007aff;
+  color: #4da3ff;
   border: 1px solid rgba(0, 122, 255, 0.2);
 }
 
@@ -592,7 +592,7 @@
 .about__marquee-content span {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
-  color: #555;
+  color: #7c7c7c;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding-right: 60px;
