@@ -10,6 +10,8 @@ import gradingAntes from '../assets/visual/grading-antes.webp'
 import gradingDepois from '../assets/visual/grading-depois.webp'
 import encostaAntes from '../assets/visual/encosta-antes.webp'
 import encostaDepois from '../assets/visual/encosta-depois.webp'
+import praiaAntes from '../assets/visual/praia-antes.webp'
+import praiaDepois from '../assets/visual/praia-depois.webp'
 
 export interface Comparison {
   id: string
@@ -44,6 +46,14 @@ export const visual = {
       caption: 'Encosta',
       before: encostaAntes,
       after: encostaDepois,
+    },
+    {
+      id: 'praia',
+      // REVISAR: descrição e legenda
+      alt: 'Silhueta de uma pessoa chutando a água do mar no fim de tarde, com uma ilha ao fundo',
+      caption: 'Praia',
+      before: praiaAntes,
+      after: praiaDepois,
     },
   ] as Comparison[],
 }
