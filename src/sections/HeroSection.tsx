@@ -64,7 +64,7 @@ function HeroSection() {
           <em>GRANTED</em>
         </div>
 
-        <BadgeCard />
+        <BadgeCard hanging />
       </div>
     </section>
   )

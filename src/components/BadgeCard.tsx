@@ -16,7 +16,12 @@ const fichaTecnica = [
 
 const stack = ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Python', 'MySQL']
 
-function BadgeCard() {
+type BadgeCardProps = {
+  /** Pendura o crachá num cordão (usado no hero). */
+  hanging?: boolean
+}
+
+function BadgeCard({ hanging = false }: BadgeCardProps) {
   const badgeRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const flipping = useRef(false)
@@ -87,7 +92,44 @@ function BadgeCard() {
   }
 
   return (
-    <div className="badge" ref={badgeRef}>
+    <div className={`badge ${hanging ? 'badge--hanging' : ''}`} ref={badgeRef}>
+      {hanging && (
+        // Cordão em V que some no escuro, com mosquetão preso no crachá
+        <svg className="badge-lanyard" viewBox="0 0 120 160" aria-hidden="true">
+          <defs>
+            <linearGradient id="lanyard-fade" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0.35" stopColor="#fff" />
+              <stop offset="1" stopColor="#fff" stopOpacity="0" />
+            </linearGradient>
+            <mask id="lanyard-mask">
+              <rect width="120" height="160" fill="url(#lanyard-fade)" />
+            </mask>
+            <linearGradient id="lanyard-metal" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#6b6b6b" />
+              <stop offset="0.5" stopColor="#d4d4d4" />
+              <stop offset="1" stopColor="#6b6b6b" />
+            </linearGradient>
+            <path id="lanyard-left" d="M18 0 L55 128" />
+            <path id="lanyard-right" d="M65 128 L102 0" />
+          </defs>
+
+          <g mask="url(#lanyard-mask)">
+            <use href="#lanyard-left" className="badge-lanyard__strap" />
+            <use href="#lanyard-right" className="badge-lanyard__strap" />
+            <text className="badge-lanyard__print">
+              <textPath href="#lanyard-left" startOffset="6">JÚLIO IWATA · FRONTEND DEV ·</textPath>
+            </text>
+            <text className="badge-lanyard__print">
+              <textPath href="#lanyard-right" startOffset="6">JÚLIO IWATA · FRONTEND DEV ·</textPath>
+            </text>
+          </g>
+
+          <rect x="49" y="122" width="22" height="12" rx="2" className="badge-lanyard__tab" />
+          <rect x="54" y="133" width="12" height="18" rx="4" fill="url(#lanyard-metal)" />
+          <rect x="57.5" y="137" width="5" height="9" rx="2.5" fill="#1a1a1a" />
+        </svg>
+      )}
+
       <div className="badge-card" ref={cardRef} onClick={handleCardClick}>
         <div className="badge-clip"></div>
 

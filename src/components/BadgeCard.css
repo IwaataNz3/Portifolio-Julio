@@ -4,6 +4,62 @@
   z-index: 20;
 }
 
+/* ─── Crachá pendurado (hero) ─── */
+.badge-lanyard {
+  position: absolute;
+  bottom: calc(100% - 32px);
+  left: 50%;
+  z-index: 21;
+  width: 120px;
+  height: 160px;
+  transform: translateX(-50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.badge-lanyard__strap {
+  stroke: #194a4c;
+  stroke-width: 9;
+}
+
+.badge-lanyard__print {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 4.2px;
+  letter-spacing: 0.6px;
+  fill: rgba(255, 255, 255, 0.55);
+  dominant-baseline: middle;
+}
+
+.badge-lanyard__tab {
+  fill: #143c3e;
+}
+
+/* Balança de leve uma vez ao carregar, como se tivesse acabado de ser pendurado.
+   O ponto de giro fica no alto do cordão. */
+.badge--hanging {
+  transform-origin: 50% -130px;
+  animation: badgeSwing 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+@keyframes badgeSwing {
+  0% { rotate: 4deg; }
+  30% { rotate: -2.5deg; }
+  55% { rotate: 1.2deg; }
+  78% { rotate: -0.4deg; }
+  100% { rotate: 0deg; }
+}
+
+/* No tablet e no celular o crachá fica embaixo do texto: sem cordão. */
+@media (max-width: 900px) {
+  .badge-lanyard {
+    display: none;
+  }
+
+  .badge--hanging {
+    animation: none;
+  }
+}
+
 .badge-card {
   width: 280px;
   height: 420px;
