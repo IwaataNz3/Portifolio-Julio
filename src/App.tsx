@@ -10,6 +10,7 @@ import ProjectsSection from './sections/ProjectsSection'
 import ExperienceSection from './sections/ExperienceSection'
 import ContactSection from './sections/ContactSection'
 import DownloadSection from './sections/DownloadSection'
+import OffCodeSection from './sections/OffCodeSection'
 import NoiseOverlay from './components/NoiseOverlay'
 import CustomCursor from './components/CustomCursor'
 import CommandPalette from './components/CommandPalette'
@@ -44,6 +45,7 @@ function App() {
         <ProjectsSection />
         <ExperienceSection />
         <ContactSection />
+        <OffCodeSection />
         <DownloadSection />
       </main>
     </>

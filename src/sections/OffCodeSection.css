@@ -1,0 +1,165 @@
+/* Mesmo verde-escuro do fim da seção Contato e do rodapé:
+   o degradê do fim da página continua sem corte. */
+.offcode {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding: 40px 5vw 140px;
+  background: #042226;
+  color: #fff;
+  z-index: 10;
+}
+
+.offcode__halftone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, transparent 85%);
+}
+
+.offcode__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ─── Cabeçalho ─── */
+.offcode__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.offcode__title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 40%, #888888 60%, #e5e5e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.offcode__title em {
+  font-style: italic;
+}
+
+.offcode__intro p {
+  max-width: 460px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.offcode__link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #00b4d8;
+  transition: color 0.2s;
+}
+
+.offcode__link:hover {
+  color: #fff;
+}
+
+/* ─── Galeria: uma grande e quatro menores ─── */
+.offcode__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 16px;
+}
+
+.offcode__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #021a1d;
+}
+
+.offcode__item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.offcode__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+
+.offcode__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offcode__photo:hover img {
+  transform: scale(1.04);
+}
+
+.offcode__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(135deg, #062a2f 0%, #021a1d 100%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Legenda no canto, sobre um degradê para ficar legível em qualquer foto */
+.offcode__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 14px 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .offcode__header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .offcode {
+    padding: 20px 5vw 100px;
+  }
+
+  .offcode__title {
+    font-size: 2.8rem;
+  }
+
+  .offcode__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 12px;
+  }
+}

@@ -82,6 +82,7 @@ function CommandPalette() {
     { id: 'projetos', group: 'Navegar', label: 'Projetos', run: goTo('projetos') },
     { id: 'experiencia', group: 'Navegar', label: 'Experiência', keywords: 'trabalho cral', run: goTo('experiencia') },
     { id: 'contato', group: 'Navegar', label: 'Contato', run: goTo('contato') },
+    { id: 'fora-do-codigo', group: 'Navegar', label: 'Fora do código', keywords: 'audiovisual fotografia clipes', run: goTo('fora-do-codigo') },
     ...projects.map((project): Command => ({
       id: `projeto-${project.id}`,
       group: 'Projetos',
