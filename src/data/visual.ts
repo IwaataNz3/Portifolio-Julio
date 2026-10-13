@@ -16,17 +16,17 @@ export interface VisualItem {
 export const visual = {
   // REVISAR
   intro:
-    'Fora do código, trabalho com audiovisual. Faço direção, captação, fotografia e color grading no DaVinci Resolve, principalmente em clipes de hip-hop e trap e em eventos.',
+    'Fora do código, trabalho com fotografia, vídeo e color grading de vídeos.',
 
   // TODO: link do seu Instagram ou reel. Vazio, o link não aparece.
   instagram: '',
 
   // TODO: trocar os espaços reservados pelas suas imagens
   items: [
-    { id: 'visual-1', alt: '', caption: 'Clipe' },
-    { id: 'visual-2', alt: '', caption: 'Evento' },
-    { id: 'visual-3', alt: '', caption: 'Fotografia' },
-    { id: 'visual-4', alt: '', caption: 'Color grading' },
-    { id: 'visual-5', alt: '', caption: 'Bastidores' },
+    { id: 'visual-1', alt: '', caption: 'Fotografia' },
+    { id: 'visual-2', alt: '', caption: 'Vídeo' },
+    { id: 'visual-3', alt: '', caption: 'Color grading' },
+    { id: 'visual-4', alt: '', caption: 'Fotografia' },
+    { id: 'visual-5', alt: '', caption: 'Vídeo' },
   ] as VisualItem[],
 }
