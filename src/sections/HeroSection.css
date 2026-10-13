@@ -330,7 +330,10 @@
 
 @media (max-width: 600px) {
   .hero__top-left {
-    top: 12vh;
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 12vh 5vw 0;
   }
 
   .hero__headline {
@@ -342,11 +345,15 @@
     margin-bottom: 16px;
   }
 
+  /* O card fica logo abaixo do texto, sem cobrir o "Disponível para..." */
   .hero__top-right {
-    top: 40vh; /* Move for the middle gap */
+    position: relative;
+    top: auto;
     bottom: auto;
-    left: 5vw;
+    left: auto;
     right: auto;
+    width: fit-content;
+    margin: 20px 5vw 0;
   }
   
   .notes-card {

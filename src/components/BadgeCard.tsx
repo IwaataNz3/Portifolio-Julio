@@ -1,5 +1,5 @@
 import './BadgeCard.css'
-import fotoJulio from '../assets/foto-julio.png'
+import fotoJulio from '../assets/foto-julio.webp'
 import cvFile from '../assets/Curriculo Julio_Iwata.pdf'
 
 function BadgeCard() {

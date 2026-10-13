@@ -1,6 +1,6 @@
 import './HeroSection.css'
 import BadgeCard from '../components/BadgeCard'
-import fundoProjeto from '../assets/fundo-projeto.png'
+import fundoProjeto from '../assets/fundo-projeto.webp'
 import cvFile from '../assets/Curriculo Julio_Iwata.pdf'
 
 function HeroSection() {

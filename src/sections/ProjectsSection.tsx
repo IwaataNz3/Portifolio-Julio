@@ -51,7 +51,7 @@ function ProjectsSection() {
                 {/* Image (Now in Middle) */}
                 <div className="project-card__image-wrapper">
                   {project.image ? (
-                    <img src={project.image} alt={project.title} className="project-card__image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={project.image} alt={project.title} className="project-card__image" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <div className="project-card__placeholder">
                       {/* Image slot without grain */}

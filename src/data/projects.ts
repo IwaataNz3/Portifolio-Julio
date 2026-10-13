@@ -1,7 +1,7 @@
-import fundoProjeto from '../assets/fundo-projeto.png'
-import fundoProjeto1 from '../assets/fundo-projeto1.png'
-import fundoProjeto2 from '../assets/fundo-projeto2.png'
-import fundoProjeto3 from '../assets/fundo-projeto3.png'
+import fundoProjeto from '../assets/fundo-projeto.webp'
+import fundoProjeto1 from '../assets/fundo-projeto1.webp'
+import fundoProjeto2 from '../assets/fundo-projeto2.webp'
+import fundoProjeto3 from '../assets/fundo-projeto3.webp'
 
 export interface Project {
   id: string

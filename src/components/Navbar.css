@@ -10,10 +10,25 @@
   border-bottom: 1px solid transparent;
 }
 
-.navbar--scrolled {
+/* O fundo com blur fica num pseudo-elemento: backdrop-filter no próprio
+   header prenderia o menu mobile (position: fixed) dentro da barra. */
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-color: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease-out);
+}
+
+.navbar--scrolled::before {
+  opacity: 1;
+}
+
+.navbar--scrolled {
   border-bottom-color: var(--hairline);
 }
 
