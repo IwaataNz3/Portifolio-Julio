@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { visual } from '../data/visual'
-import Lightbox from '../components/Lightbox'
 import BeforeAfter from '../components/BeforeAfter'
 import './OffCodeSection.css'
 
-function OffCodeSection() {
-  // O lightbox navega só pelas imagens que já existem.
-  const photos = visual.items.filter((item) => item.src)
-  const [open, setOpen] = useState<number | null>(null)
+const pad = (n: number) => String(n).padStart(2, '0')
 
-  const step = (delta: number) =>
-    setOpen((i) => (i === null ? i : (i + delta + photos.length) % photos.length))
+function OffCodeSection() {
+  const { comparisons } = visual
+  const [current, setCurrent] = useState(0)
+  const active = comparisons[current]
+
+  if (!active) return null
 
   return (
     <section className="offcode" id="fora-do-codigo" aria-labelledby="offcode-title">
@@ -31,40 +31,33 @@ function OffCodeSection() {
           </div>
         </div>
 
-        <ul className="offcode__grid">
-          {visual.items.map((item) => (
-            <li key={item.id} className="offcode__item">
-              {item.compare ? (
-                <BeforeAfter before={item.compare.before} after={item.compare.after} alt={item.alt} />
-              ) : item.src ? (
-                <button
-                  type="button"
-                  className="offcode__photo"
-                  onClick={() => setOpen(photos.indexOf(item))}
-                  aria-label={`Ampliar: ${item.alt || item.caption}`}
-                  data-cursor="ver"
-                >
-                  <img src={item.src} alt="" loading="lazy" decoding="async" />
-                </button>
-              ) : (
-                <div className="offcode__placeholder">
-                  <span>✦ Adicionar still</span>
-                </div>
-              )}
-              <span className="offcode__caption">{item.caption}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {/* Comparador grande: a key troca a foto inteira ao mudar de par */}
+        <div className="offcode__viewer">
+          <BeforeAfter key={active.id} before={active.before} after={active.after} alt={active.alt} />
+        </div>
 
-      <Lightbox
-        item={open === null ? null : photos[open]}
-        position={(open ?? 0) + 1}
-        total={photos.length}
-        onClose={() => setOpen(null)}
-        onPrev={() => step(-1)}
-        onNext={() => step(1)}
-      />
+        <div className="offcode__meta">
+          <span>Color grading · {active.caption}</span>
+          <span>Arraste para comparar{comparisons.length > 1 && ` · ${pad(current + 1)} / ${pad(comparisons.length)}`}</span>
+        </div>
+
+        {comparisons.length > 1 && (
+          <div className="offcode__thumbs" role="group" aria-label="Escolher foto">
+            {comparisons.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                className="offcode__thumb"
+                aria-pressed={index === current}
+                aria-label={item.caption}
+                onClick={() => setCurrent(index)}
+              >
+                <img src={item.after} alt="" loading="lazy" decoding="async" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   )
 }

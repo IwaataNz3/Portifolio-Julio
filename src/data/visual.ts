@@ -1,21 +1,21 @@
-// Seção "Fora do código" (audiovisual).
+// Seção "Fora do código": antes e depois do color grading.
 //
-// Para adicionar uma imagem:
-// 1. Coloque o arquivo em src/assets/visual/ (de preferência .webp, até uns 250KB).
-// 2. Importe aqui em cima, ex.: import clipe1 from '../assets/visual/clipe-1.webp'
-// 3. Use no `src` do item e escreva um `alt` descrevendo a imagem.
-// Item sem `src` aparece como espaço reservado. O primeiro item é o grande.
+// Para adicionar um par:
+// 1. Coloque as duas imagens em src/assets/visual/ (mesmo enquadramento e tamanho).
+//    Se mandar para o Claude, ele converte para .webp e otimiza.
+// 2. Importe as duas aqui em cima.
+// 3. Acrescente um item em `comparisons`. Com mais de um, aparecem as miniaturas.
 
 import gradingAntes from '../assets/visual/grading-antes.webp'
 import gradingDepois from '../assets/visual/grading-depois.webp'
 
-export interface VisualItem {
+export interface Comparison {
   id: string
-  src?: string
-  /** Antes e depois do color grading: vira o slider de comparação. */
-  compare?: { before: string; after: string }
+  /** Descrição da foto para leitor de tela. */
   alt: string
   caption: string
+  before: string
+  after: string
 }
 
 export const visual = {
@@ -23,21 +23,17 @@ export const visual = {
   intro:
     'Fora do código, trabalho com fotografia, vídeo e color grading de vídeos.',
 
-  // TODO: link do seu Instagram ou reel. Vazio, o link não aparece.
+  // TODO: link do seu Instagram ou portfólio de fotos. Vazio, o link não aparece.
   instagram: '',
 
-  // TODO: trocar os espaços reservados pelas suas imagens
-  items: [
+  comparisons: [
     {
-      id: 'grading-por-do-sol',
-      // REVISAR: descrição da imagem
+      id: 'por-do-sol',
+      // REVISAR: descrição e legenda
       alt: 'Pôr do sol sobre um vale com casas e montanhas ao fundo',
-      caption: 'Color grading · arraste para comparar',
-      compare: { before: gradingAntes, after: gradingDepois },
+      caption: 'Pôr do sol',
+      before: gradingAntes,
+      after: gradingDepois,
     },
-    { id: 'visual-2', alt: '', caption: 'Vídeo' },
-    { id: 'visual-3', alt: '', caption: 'Fotografia' },
-    { id: 'visual-4', alt: '', caption: 'Fotografia' },
-    { id: 'visual-5', alt: '', caption: 'Vídeo' },
-  ] as VisualItem[],
+  ] as Comparison[],
 }
