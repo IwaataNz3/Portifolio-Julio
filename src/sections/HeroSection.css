@@ -292,42 +292,6 @@
 
 
 
-/* ─── Cordão do crachá ───
-   Fica numa camada acima das luzes e abaixo do texto, e termina
-   atrás do topo do crachá (420px de altura, 8vh acima do fim do hero). */
-.hero__lanyard {
-  position: absolute;
-  top: 0;
-  bottom: calc(8vh + 420px - 16px);
-  left: 50%;
-  z-index: 5;
-  width: 16px;
-  transform: translateX(-50%);
-  overflow: hidden;
-  background: linear-gradient(90deg, #121212, #1e1e1e 50%, #121212);
-  border-inline: 1px solid rgba(255, 255, 255, 0.06);
-  pointer-events: none;
-}
-
-.hero__lanyard span {
-  display: block;
-  writing-mode: vertical-rl;
-  margin: 0 auto;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 7px;
-  letter-spacing: 0.2em;
-  line-height: 16px;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.28);
-}
-
-/* No tablet e no celular o crachá fica embaixo do texto: sem cordão. */
-@media (max-width: 900px) {
-  .hero__lanyard {
-    display: none;
-  }
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .hero__top-right {

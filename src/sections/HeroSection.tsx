@@ -57,11 +57,6 @@ function HeroSection() {
         Júlio Iwata
       </div>
 
-      {/* Cordão do crachá: desce das luzes, atrás do texto */}
-      <div className="hero__lanyard" aria-hidden="true">
-        <span>{'JÚLIO IWATA · FRONTEND DEV · '.repeat(14)}</span>
-      </div>
-
       {/* Center Interactive ID Badge */}
       <div className="hero__center-stage">
         <div className="hero__stamp">
