@@ -1,15 +1,49 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { projects } from '../data/projects'
+import ProjectModal from '../components/ProjectModal'
 import './ProjectsSection.css'
+
+const pad = (n: number) => String(n).padStart(2, '0')
 
 function ProjectsSection() {
   const carouselRef = useRef<HTMLDivElement>(null)
+  const [current, setCurrent] = useState(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  // A paleta de comandos (Ctrl+K) também abre projetos.
+  useEffect(() => {
+    const onOpen = (event: Event) => {
+      const index = projects.findIndex((p) => p.id === (event as CustomEvent<string>).detail)
+      if (index >= 0) setOpenIndex(index)
+    }
+    window.addEventListener('abrir-projeto', onOpen)
+    return () => window.removeEventListener('abrir-projeto', onOpen)
+  }, [])
+
+  const step = (delta: number) =>
+    setOpenIndex((i) => (i === null ? i : (i + delta + projects.length) % projects.length))
+
+  // Distância de um card para o outro (largura + espaço), que muda no celular.
+  const getStep = () => {
+    const carousel = carouselRef.current
+    const card = carousel?.querySelector<HTMLElement>('.project-card')
+    if (!carousel || !card) return 0
+    return card.offsetWidth + parseFloat(getComputedStyle(carousel).columnGap || '0')
+  }
 
   const scroll = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -532 : 532
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
-    }
+    const step = getStep()
+    carouselRef.current?.scrollBy({ left: direction === 'left' ? -step : step, behavior: 'smooth' })
+  }
+
+  // Atualiza o contador "01 / 04" conforme o carrossel anda.
+  const handleScroll = () => {
+    const carousel = carouselRef.current
+    const step = getStep()
+    if (!carousel || !step) return
+    const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 4
+    const index = atEnd ? projects.length - 1 : Math.round(carousel.scrollLeft / step)
+    setCurrent(Math.min(projects.length - 1, Math.max(0, index)))
   }
 
   return (
@@ -30,13 +64,14 @@ function ProjectsSection() {
 
         {/* Projects Carousel with Blur Mask */}
         <div className="projects__carousel-wrapper">
-          <div className="projects__carousel" ref={carouselRef}>
-            {projects.map((project) => (
+          <div className="projects__carousel" ref={carouselRef} onScroll={handleScroll}>
+            {projects.map((project, projectIndex) => (
               <div className="project-card" key={project.id}>
 
                 {/* Project Info (Now on Top) */}
                 <div className="project-card__info">
                   <h3 className="project-card__title">{project.title}</h3>
+                  <p className="project-card__desc">{project.description}</p>
 
                   {/* Tech Tags */}
                   <div className="project-card__tags">
@@ -49,16 +84,21 @@ function ProjectsSection() {
                 </div>
 
                 {/* Image (Now in Middle) */}
-                <div className="project-card__image-wrapper">
+                <button
+                  type="button"
+                  className="project-card__image-wrapper"
+                  onClick={() => setOpenIndex(projectIndex)}
+                  aria-label={`Ver detalhes do projeto ${project.title}`}
+                >
                   {project.image ? (
-                    <img src={project.image} alt={project.title} className="project-card__image" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={project.image} alt={project.title} className="project-card__image" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="project-card__placeholder">
-                      {/* Image slot without grain */}
+                    <span className="project-card__placeholder">
                       <span className="placeholder-text">✦ {project.title} Preview</span>
-                    </div>
+                    </span>
                   )}
-                </div>
+                  <span className="project-card__more" aria-hidden="true">+ Detalhes</span>
+                </button>
 
                 {/* Card Footer (Links) */}
                 <div className="project-card__footer">
@@ -68,7 +108,7 @@ function ProjectsSection() {
                     </a>
                   )}
                   <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="project-btn project-btn--repo">
-                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                     </svg> Github
                   </a>
@@ -80,15 +120,27 @@ function ProjectsSection() {
 
         {/* Centered Controls */}
         <div className="projects__controls">
-          <button className="carousel-btn" onClick={() => scroll('left')}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <button className="carousel-btn" onClick={() => scroll('left')} disabled={current === 0} aria-label="Projeto anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
-          <button className="carousel-btn" onClick={() => scroll('right')}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <span className="projects__counter" aria-live="polite">
+            {pad(current + 1)} <span aria-hidden="true">/</span><span className="sr-only">de</span> {pad(projects.length)}
+          </span>
+          <button className="carousel-btn" onClick={() => scroll('right')} disabled={current === projects.length - 1} aria-label="Próximo projeto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
         </div>
 
       </div>
+
+      <ProjectModal
+        project={openIndex === null ? null : projects[openIndex]}
+        position={(openIndex ?? 0) + 1}
+        total={projects.length}
+        onClose={() => setOpenIndex(null)}
+        onPrev={() => step(-1)}
+        onNext={() => step(1)}
+      />
     </section>
   )
 }

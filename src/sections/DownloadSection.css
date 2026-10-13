@@ -34,13 +34,18 @@
 }
 
 /* Badge card override in download section if needed */
-.download-section__center .badge-card {
-  transform: perspective(1000px) rotateY(-5deg) rotateX(10deg) scale(0.9);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+.download-section__center .badge {
+  scale: 0.9;
+  transition: scale 0.4s ease;
 }
 
-.download-section__center .badge-card:hover {
-  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(0.95) translateY(-10px);
+.download-section__center .badge:hover {
+  scale: 0.95;
+}
+
+.download-section__center .badge-card {
+  --rx: 10deg;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
 }
 
 .download-section__footer {

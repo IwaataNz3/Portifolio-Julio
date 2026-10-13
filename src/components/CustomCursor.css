@@ -58,3 +58,18 @@ body {
     cursor: none !important;
   }
 }
+
+/* Painéis abertos (dialog) ficam acima do cursor próprio:
+   nesse caso o cursor do sistema volta. */
+body:has(dialog[open]),
+body:has(dialog[open]) * {
+  cursor: auto !important;
+}
+
+body:has(dialog[open]) :is(a, button) {
+  cursor: pointer !important;
+}
+
+body:has(dialog[open]) :is(.cursor-dot, .cursor-ring) {
+  display: none;
+}

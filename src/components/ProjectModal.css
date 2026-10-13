@@ -1,0 +1,167 @@
+.project-modal {
+  width: min(880px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: #161618;
+  color: #fff;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.project-modal::backdrop {
+  background: rgba(5, 5, 6, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.project-modal[open] {
+  animation: projectModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes projectModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+.project-modal__inner {
+  position: relative;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, color 0.2s;
+}
+
+.project-modal__close:hover {
+  background: #fff;
+  color: #000;
+}
+
+.project-modal__media {
+  aspect-ratio: 16 / 7;
+  background: #111112;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.project-modal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.project-modal__body {
+  padding: 28px 32px 24px;
+}
+
+.project-modal__context {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00b4d8;
+}
+
+.project-modal__title {
+  margin: 6px 0 12px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1.05;
+  color: #e5e5e5;
+}
+
+.project-modal__details {
+  max-width: 62ch;
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #d4d4d4;
+}
+
+.project-modal__role {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.project-modal__role span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6e6e73;
+}
+
+.project-modal__role p {
+  margin-top: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+}
+
+.project-modal__links {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.project-modal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #6e6e73;
+}
+
+.project-modal__nav button {
+  padding: 6px 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #a1a1a6;
+  transition: color 0.2s;
+}
+
+.project-modal__nav button:hover {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .project-modal__body {
+    padding: 20px;
+  }
+
+  .project-modal__title {
+    font-size: 2rem;
+  }
+}

@@ -55,6 +55,7 @@
 .projects__controls {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
   margin-top: 32px;
 }
@@ -73,9 +74,25 @@
   transition: all 0.3s ease;
 }
 
-.carousel-btn:hover {
+.carousel-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.15);
   transform: scale(1.05);
+}
+
+/* No primeiro e no último projeto, a seta daquele lado apaga. */
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.projects__counter {
+  min-width: 72px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: #a1a1a6;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ─── Projects Carousel Wrapper (For Blur Mask) ─── */
@@ -145,6 +162,36 @@
   margin-bottom: 24px;
 }
 
+/* O print é um botão que abre os detalhes do projeto. */
+button.project-card__image-wrapper {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+
+.project-card__more {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+
+.project-card__image-wrapper:hover .project-card__more,
+.project-card__image-wrapper:focus-visible .project-card__more {
+  background: #fff;
+  color: #000;
+}
+
 .project-card:hover .project-card__image-wrapper {
   transform: translateY(-4px) scale(1.02);
 }
@@ -175,8 +222,22 @@
   font-size: 2.2rem;
   font-weight: 400;
   color: #e5e5e5;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   line-height: 1.1;
+}
+
+.project-card__desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: #a1a1a6;
+  margin-bottom: 16px;
+}
+
+.project-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ─── Tech Tags ─── */

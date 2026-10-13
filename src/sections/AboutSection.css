@@ -207,6 +207,16 @@
   white-space: pre;
 }
 
+/* Cursor de digitação: aparece só enquanto o código está sendo escrito. */
+.ide-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: #d4d4d4;
+}
+
 /* ─── IDE Mode Toggle & Preview ─── */
 .ide-mode-toggle {
   margin-left: auto;

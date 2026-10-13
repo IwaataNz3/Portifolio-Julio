@@ -58,14 +58,59 @@
 }
 
 .navbar__link {
+  position: relative;
   font-size: var(--text-body-sm);
   font-weight: var(--weight-regular);
   color: var(--ink-muted);
   transition: color var(--duration) var(--ease-out);
 }
 
-.navbar__link:hover {
+.navbar__link:hover,
+.navbar__link--active {
   color: var(--ink);
+}
+
+/* Seção ativa: um LED aceso ao lado do link, como as luzes do hero. */
+.navbar__link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #00b4d8;
+  box-shadow: 0 0 8px #00b4d8;
+  transform: translateY(-50%) scale(0);
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.navbar__link--active::before {
+  transform: translateY(-50%) scale(1);
+}
+
+/* ─── Atalho Ctrl+K ─── */
+
+.navbar__cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 5px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-sm);
+  color: var(--ink-subtle);
+  transition: border-color var(--duration) var(--ease-out),
+              color var(--duration) var(--ease-out);
+}
+
+.navbar__cmd kbd {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.navbar__cmd:hover {
+  color: var(--ink);
+  border-color: var(--hairline-hover);
 }
 
 /* ─── Hamburger ─── */
@@ -104,6 +149,11 @@
 @media (max-width: 768px) {
   .navbar__hamburger {
     display: flex;
+  }
+
+  /* No celular não tem teclado: o atalho some. */
+  .navbar__cmd-item {
+    display: none;
   }
 
   .navbar__links {

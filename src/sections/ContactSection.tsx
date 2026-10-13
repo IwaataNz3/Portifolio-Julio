@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from 'react'
+import { EMAIL, GITHUB, LINKEDIN, copyEmail } from '../lib/actions'
 import './ContactSection.css'
 
 const socialLinks = [
-  { 
-    label: 'LinkedIn', 
-    href: 'https://www.linkedin.com/in/julioiwata/',
+  {
+    label: 'LinkedIn',
+    href: LINKEDIN,
     subtitle: 'Conectar',
     hoverColor: '#0077b5',
     icon: (
@@ -14,9 +16,9 @@ const socialLinks = [
       </svg>
     )
   },
-  { 
-    label: 'GitHub', 
-    href: 'https://github.com/IwaataNz3',
+  {
+    label: 'GitHub',
+    href: GITHUB,
     subtitle: 'Repositórios',
     hoverColor: '#ffffff',
     icon: (
@@ -25,29 +27,55 @@ const socialLinks = [
       </svg>
     )
   },
-  { 
-    label: 'Email', 
-    href: 'mailto:iwatajulio@gmail.com',
-    subtitle: 'Mensagem',
-    hoverColor: '#ea4335',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-      </svg>
-    )
-  },
 ]
 
+const emailIcon = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+  </svg>
+)
+
+const arrowIcon = (
+  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+)
+
+const copyIcon = (
+  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+  </svg>
+)
+
 function ContactSection() {
+  const [copied, setCopied] = useState(false)
+  const timer = useRef<number | undefined>(undefined)
+
+  useEffect(() => () => window.clearTimeout(timer.current), [])
+
+  // Copia o e-mail e carimba o card. Se o navegador não deixar copiar,
+  // abre o app de e-mail como antes.
+  const handleEmail = async () => {
+    if (!(await copyEmail())) {
+      window.location.href = `mailto:${EMAIL}`
+      return
+    }
+    setCopied(true)
+    window.clearTimeout(timer.current)
+    timer.current = window.setTimeout(() => setCopied(false), 2400)
+  }
+
   return (
     <section className="contact-section" id="contato">
-      
+
       {/* Background Halftone Overlay */}
       <div className="contact-section__halftone"></div>
 
       <div className="contact-section__container">
-        
+
         <div className="contact-section__content">
           <h2 className="contact-section__title">
             Vamos conversar?
@@ -65,7 +93,7 @@ function ContactSection() {
               style={{ '--hover-color': link.hoverColor } as React.CSSProperties}
             >
               <div className="contact-card__halftone-grain"></div>
-              
+
               <div className="contact-card__content">
                 <div className="contact-card__big-icon">
                   {link.icon}
@@ -77,17 +105,50 @@ function ContactSection() {
                   <span className="contact-card__name">{link.label}</span>
                   <span className="contact-card__subtitle">{link.subtitle}</span>
                 </div>
-                
+
                 {/* Small Right Arrow to indicate clickable */}
                 <div className="contact-card__arrow">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
+                  {arrowIcon}
                 </div>
               </div>
             </a>
           ))}
+
+          {/* E-mail: copia o endereço em vez de abrir o app de e-mail */}
+          <button
+            type="button"
+            className={`contact-card contact-card--email ${copied ? 'contact-card--copied' : ''}`}
+            onClick={handleEmail}
+            style={{ '--hover-color': '#ea4335' } as React.CSSProperties}
+          >
+            <div className="contact-card__halftone-grain"></div>
+
+            <span className="contact-card__stamp" aria-hidden="true">
+              <span>E-MAIL</span>
+              <em>Copiado</em>
+            </span>
+
+            <div className="contact-card__content">
+              <div className="contact-card__big-icon">
+                {emailIcon}
+              </div>
+            </div>
+
+            <div className="contact-card__footer">
+              <div className="contact-card__meta">
+                <span className="contact-card__name">Email</span>
+                <span className="contact-card__subtitle">{EMAIL}</span>
+              </div>
+
+              <div className="contact-card__arrow" title="Copiar e-mail">
+                {copyIcon}
+              </div>
+            </div>
+
+            <span className="sr-only" aria-live="polite">
+              {copied ? 'E-mail copiado' : 'Copiar e-mail'}
+            </span>
+          </button>
         </div>
 
 

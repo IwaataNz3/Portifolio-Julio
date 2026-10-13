@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import './AboutSection.css'
 
 type TabId = 'academica' | 'experiencia' | 'projetos'
@@ -160,9 +160,37 @@ const renderPreviewContent = (tab: TabId) => {
   }
 }
 
+// Tempo para digitar um arquivo inteiro, qualquer que seja o tamanho.
+const TYPE_DURATION = 900
+
+// Digita o código ao abrir o modo código ou trocar de aba nele.
+function useTypedCode(code: string, active: boolean) {
+  const [count, setCount] = useState(code.length)
+
+  useLayoutEffect(() => {
+    if (!active || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCount(code.length)
+      return
+    }
+
+    setCount(0)
+    const start = performance.now()
+    let frame = requestAnimationFrame(function tick(now) {
+      const progress = Math.min(1, (now - start) / TYPE_DURATION)
+      setCount(Math.round(progress * code.length))
+      if (progress < 1) frame = requestAnimationFrame(tick)
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [code, active])
+
+  return { typed: code.slice(0, count), typing: count < code.length }
+}
+
 function AboutSection() {
   const [activeTab, setActiveTab] = useState<TabId>('academica')
   const [viewMode, setViewMode] = useState<'preview' | 'code'>('preview')
+  const { typed, typing } = useTypedCode(codeSnippets[activeTab], viewMode === 'code')
 
   return (
     <section className="about" id="sobre">
@@ -237,7 +265,8 @@ function AboutSection() {
                     ))}
                   </div>
                   <pre className="ide-code" key={activeTab}>
-                    <code dangerouslySetInnerHTML={{ __html: highlightCode(codeSnippets[activeTab]) }} />
+                    <code dangerouslySetInnerHTML={{ __html: highlightCode(typed) }} />
+                    {typing && <span className="ide-caret" aria-hidden="true" />}
                   </pre>
                 </>
               ) : (
