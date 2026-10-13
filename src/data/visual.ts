@@ -12,6 +12,8 @@ import encostaAntes from '../assets/visual/encosta-antes.webp'
 import encostaDepois from '../assets/visual/encosta-depois.webp'
 import praiaAntes from '../assets/visual/praia-antes.webp'
 import praiaDepois from '../assets/visual/praia-depois.webp'
+import retratoAntes from '../assets/visual/retrato-antes.webp'
+import retratoDepois from '../assets/visual/retrato-depois.webp'
 
 export interface Comparison {
   id: string
@@ -54,6 +56,14 @@ export const visual = {
       caption: 'Praia',
       before: praiaAntes,
       after: praiaDepois,
+    },
+    {
+      id: 'retrato',
+      // REVISAR: descrição e legenda
+      alt: 'Mulher de quimono amarelo tocando um galho de árvore num jardim, com luz filtrada pelas folhas',
+      caption: 'Retrato',
+      before: retratoAntes,
+      after: retratoDepois,
     },
   ] as Comparison[],
 }
