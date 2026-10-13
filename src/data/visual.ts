@@ -8,6 +8,8 @@
 
 import gradingAntes from '../assets/visual/grading-antes.webp'
 import gradingDepois from '../assets/visual/grading-depois.webp'
+import encostaAntes from '../assets/visual/encosta-antes.webp'
+import encostaDepois from '../assets/visual/encosta-depois.webp'
 
 export interface Comparison {
   id: string
@@ -34,6 +36,14 @@ export const visual = {
       caption: 'Pôr do sol',
       before: gradingAntes,
       after: gradingDepois,
+    },
+    {
+      id: 'encosta',
+      // REVISAR: descrição e legenda
+      alt: 'Encosta de morro gramada com pinheiros espalhados, contra um céu cinza',
+      caption: 'Encosta',
+      before: encostaAntes,
+      after: encostaDepois,
     },
   ] as Comparison[],
 }
